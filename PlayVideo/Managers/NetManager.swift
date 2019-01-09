@@ -12,6 +12,7 @@ import Foundation
 
 let url = "https://kudago.com/public-api/v1.4/locations/?lang=&fields=&order_by="
 
+
 struct Cities: Decodable {
     var cities: [NameCity]
 }
@@ -25,7 +26,7 @@ struct NameCity: Decodable {
 final class NetManager: NSObject {
     
     static func getNews(complition: @escaping([NameCity]) -> Void) {
-        AF.request(url,
+        Alamofire.request(url,
                    method: HTTPMethod.get,
                    parameters: nil).responseJSON {
                     response in

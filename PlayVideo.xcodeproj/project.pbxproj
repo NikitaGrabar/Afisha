@@ -19,6 +19,10 @@
 		CE39C84F21DE0CCA008E29B0 /* FavoritViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE39C84E21DE0CCA008E29B0 /* FavoritViewController.swift */; };
 		CE39C85121DE16BF008E29B0 /* NetManagerNews.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE39C85021DE16BF008E29B0 /* NetManagerNews.swift */; };
 		CE3B1F4921DF52DF006880DB /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3B1F4821DF52DF006880DB /* NewsTableViewCell.swift */; };
+		CE65984121DFB89F0082F9BE /* FirstTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE65984021DFB89F0082F9BE /* FirstTableViewCell.swift */; };
+		CE65984621E10F900082F9BE /* FilmsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE65984521E10F900082F9BE /* FilmsViewController.swift */; };
+		CE65984821E10FB50082F9BE /* NetManagerFilms.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE65984721E10FB50082F9BE /* NetManagerFilms.swift */; };
+		CE65984A21E10FF30082F9BE /* FilmsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE65984921E10FF30082F9BE /* FilmsTableViewCell.swift */; };
 		FE45F65BD1990CBCE5ABA09A /* Pods_PlayVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A50F12070FBB43BD85CABE58 /* Pods_PlayVideo.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +43,10 @@
 		CE39C84E21DE0CCA008E29B0 /* FavoritViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritViewController.swift; sourceTree = "<group>"; };
 		CE39C85021DE16BF008E29B0 /* NetManagerNews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetManagerNews.swift; sourceTree = "<group>"; };
 		CE3B1F4821DF52DF006880DB /* NewsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
+		CE65984021DFB89F0082F9BE /* FirstTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstTableViewCell.swift; sourceTree = "<group>"; };
+		CE65984521E10F900082F9BE /* FilmsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmsViewController.swift; sourceTree = "<group>"; };
+		CE65984721E10FB50082F9BE /* NetManagerFilms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetManagerFilms.swift; sourceTree = "<group>"; };
+		CE65984921E10FF30082F9BE /* FilmsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmsTableViewCell.swift; sourceTree = "<group>"; };
 		F26891495C6931C27C0C1DB7 /* Pods-PlayVideo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlayVideo.release.xcconfig"; path = "Pods/Target Support Files/Pods-PlayVideo/Pods-PlayVideo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -108,6 +116,8 @@
 			isa = PBXGroup;
 			children = (
 				CE39C84E21DE0CCA008E29B0 /* FavoritViewController.swift */,
+				CE65984521E10F900082F9BE /* FilmsViewController.swift */,
+				CE65984B21E10FFD0082F9BE /* CellFilms */,
 				CE3B1F4A21DF52EE006880DB /* CellNews */,
 			);
 			path = TapBar;
@@ -126,6 +136,7 @@
 			children = (
 				CE05B79C21D4D34B00DC7E0C /* PlayerVC.swift */,
 				8453149721D6529600072274 /* ViewCity.swift */,
+				CE65984221DFB8B90082F9BE /* CellCity */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -135,6 +146,7 @@
 			children = (
 				8453149921D6536500072274 /* NetManager.swift */,
 				CE39C85021DE16BF008E29B0 /* NetManagerNews.swift */,
+				CE65984721E10FB50082F9BE /* NetManagerFilms.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -142,7 +154,6 @@
 		CE3EE9EA21D7DE4E00875EB8 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				CE3EE9EF21D7DEAC00875EB8 /* View */,
 				CE3EE9EB21D7DE5800875EB8 /* Cell */,
 			);
 			path = Views;
@@ -182,11 +193,20 @@
 			path = Apps;
 			sourceTree = "<group>";
 		};
-		CE3EE9EF21D7DEAC00875EB8 /* View */ = {
+		CE65984221DFB8B90082F9BE /* CellCity */ = {
 			isa = PBXGroup;
 			children = (
+				CE65984021DFB89F0082F9BE /* FirstTableViewCell.swift */,
 			);
-			path = View;
+			path = CellCity;
+			sourceTree = "<group>";
+		};
+		CE65984B21E10FFD0082F9BE /* CellFilms */ = {
+			isa = PBXGroup;
+			children = (
+				CE65984921E10FF30082F9BE /* FilmsTableViewCell.swift */,
+			);
+			path = CellFilms;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -291,12 +311,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-PlayVideo/Pods-PlayVideo-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireImage/AlamofireImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -310,13 +332,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE65984121DFB89F0082F9BE /* FirstTableViewCell.swift in Sources */,
+				CE65984A21E10FF30082F9BE /* FilmsTableViewCell.swift in Sources */,
 				8453149A21D6536500072274 /* NetManager.swift in Sources */,
+				CE65984621E10F900082F9BE /* FilmsViewController.swift in Sources */,
 				CE05B79D21D4D34B00DC7E0C /* PlayerVC.swift in Sources */,
 				CE3B1F4921DF52DF006880DB /* NewsTableViewCell.swift in Sources */,
 				CE39C84F21DE0CCA008E29B0 /* FavoritViewController.swift in Sources */,
 				8453149821D6529600072274 /* ViewCity.swift in Sources */,
 				CE05B78921D4C1C800DC7E0C /* AppDelegate.swift in Sources */,
 				CE39C85121DE16BF008E29B0 /* NetManagerNews.swift in Sources */,
+				CE65984821E10FB50082F9BE /* NetManagerFilms.swift in Sources */,
 				8453148F21D6387A00072274 /* StartCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

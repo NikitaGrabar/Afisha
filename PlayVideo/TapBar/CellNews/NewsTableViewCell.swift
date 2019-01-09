@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AlamofireImage
 
 class NewsTableViewCell: UITableViewCell {
 
@@ -21,42 +22,21 @@ class NewsTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
-
     }
 
     // MARK: - Configure methods
-    
     func confugureCell(model: ResultDictionary) {
         labelNews.text = model.title
-        configureImage(image: model.images[0].image)
+        setupImageView(url: model.images[0].image)
     }
     
-    func configureImage(image: String) {
-
-    getImageFromServer(imgageUrl: image)
+    func setupImageView(url: String) {
+        let urlImage = URL(string: url)!
+        imagesNews.af_setImage(withURL: urlImage,
+                               placeholderImage: UIImage(),
+                               filter: nil, progress: nil,
+                               imageTransition: UIImageView.ImageTransition.noTransition, runImageTransitionIfCached: false,
+                               completion: nil)
     }
-    
-    func configureImageArray(image: UIImage) {
-        self.imagesNews.image = image
-        
-    }
-    
-    // MARK: - NetManager Methods save
-    func getImageFromServer(imgageUrl: String) {
-        let imageURL: URL = URL(string: imgageUrl)!
-        let queue = DispatchQueue.global(qos: .utility)
-        queue.async{
-            if let data = try? Data(contentsOf: imageURL){
-                DispatchQueue.main.async {
-                    if let image = UIImage(data: data) {
-                        self.configureImageArray(image: image)
-                    }
-                }
-            }
-        }
-    }
-
-
     
 }

@@ -20,8 +20,8 @@ class PlayerVC: UIViewController {
     
     // MARK: - Properties
     var player = AVPlayer()
-    var textArray = ["Добрый вечер дорогие друзья","Сдесь должно быть описание как пользоваться нашим приложением,но будет то что захочу я!!!","Смотрите лучше видео"]
-    var textButtons = ["Next","Next","Select location"]
+    var textArray = ["Добрый вечер дорогие друзья","Здесь должно быть описание как пользоваться нашим приложением,но будет то что захочу я!!!","Смотрите лучше видео"]
+    var textButtons = ["Далее","Далее","Выбрать город"]
 
     // MARK: - ViewController lifecycle
     override func viewDidLoad() {

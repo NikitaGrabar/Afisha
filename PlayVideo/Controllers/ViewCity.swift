@@ -55,6 +55,7 @@ class ViewCity: UIViewController {
         cell.textLabel?.text = newsArray[indexPath.row].name
         return cell
     }
+    
   
 
 }
@@ -63,10 +64,15 @@ extension ViewCity : UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyBord : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newVC = storyBord.instantiateViewController(withIdentifier: "TapBar")
+        
+        globalLocation = newsArray[indexPath.row].slug
+        
         self.present(newVC, animated: true, completion: nil)
     }
     
 }
+
+
 
 
 
