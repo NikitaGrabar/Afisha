@@ -46,7 +46,7 @@ class PlayerVC: UIViewController {
     }
     
     func playVideo() {
-        guard let path = Bundle.main.path(forResource: "video", ofType: "mp4") else { return }
+        guard let path = Bundle.main.path(forResource: "videoPresent", ofType: "mov") else { return }
         self.player = AVPlayer(url: URL(fileURLWithPath: path))
         self.player.volume = 0
 
