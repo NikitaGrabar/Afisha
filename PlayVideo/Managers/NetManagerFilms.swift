@@ -10,47 +10,42 @@ import Foundation
 import Alamofire
 
 
-
-
-
-
-let urlFilms = "https://kudago.com/public-api/v1.4/movies/?fields=site_url,title,genres,original_title,year,images,imdb_url"
+let urlFilms = "https://kudago.com/public-api/v1.2/movies/"
 
 
 struct FilmsCount: Decodable {
     var count:Int
     var next:String
-    var previous:String
-    var results:[FilmsResults]
+    var previous:String?
+    var results:[FilmsResults]?
 }
 
 struct FilmsResults: Decodable {
-    var site_url:String
+    var id :Int
     var title: String
-    var genres: [FilmsGenres]
+    var poster: FilmsImages
+    
 }
 
-struct FilmsGenres: Decodable {
-   var id :Int
-    var name:String
-    var slug: String
-}
-
-
-
-struct FilmsTiile: Decodable {
-    var year:Int
-    var images: [FilmsImages]
-}
 struct FilmsImages: Decodable {
-   var image:String
+    var image:String
 }
+
+
+//
+//struct FilmsTiile: Decodable {
+//    var year:Int
+//    var images: [FilmsImages]
+//}
+//struct FilmsImages: Decodable {
+//   var image:String
+//}
 
 
 final class NetManagerFilms: NSObject {
     
-    static func getFilmsImages(complition: @escaping([FilmsImages]) -> Void) {
-        Alamofire.request(url,
+    static func getFilmsImages(complition: @escaping(FilmsCount) -> Void) {
+        Alamofire.request(urlFilms,
                    method: HTTPMethod.get,
                    parameters: nil).responseJSON {
                     response in
@@ -59,7 +54,7 @@ final class NetManagerFilms: NSObject {
                     case .success:
                         guard let data = response.data else { return }
                         do {
-                            let object = try JSONDecoder().decode([FilmsImages].self, from: data)
+                            let object = try JSONDecoder().decode(FilmsCount.self, from: data)
                             complition(object)
                         } catch let error {
                             print(error)

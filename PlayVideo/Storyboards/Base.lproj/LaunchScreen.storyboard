@@ -20,12 +20,13 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Afisha__logo__3" translatesAutoresizingMaskIntoConstraints="NO" id="laz-65-pXW">
                                 <rect key="frame" x="0.0" y="44" width="375" height="734"/>
+                                <color key="backgroundColor" red="0.96760791540145874" green="0.11050213128328323" blue="0.06540650874376297" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="laz-65-pXW" secondAttribute="height" multiplier="375:734" id="0Uq-pB-WgM"/>
                                 </constraints>
                             </imageView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.96760791540145874" green="0.11050213128328323" blue="0.06540650874376297" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="laz-65-pXW" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="QWo-tn-fjY"/>
                             <constraint firstItem="laz-65-pXW" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="joC-Nx-5Iz"/>

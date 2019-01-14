@@ -13,44 +13,68 @@ class FilmsViewController: UIViewController {
     
     //Mark:Property
     
-    var newsArrayFilms = [FilmsImages](){
+    var newsArrayFilms = [FilmsResults](){
         didSet {
             self.FilmsTAbleView.reloadData()
         }
     }
+    
+    //    var newsFilmsImag = [FilmsImages](){
+    //        didSet {
+    //            self.FilmsTAbleView.reloadData()
+    //
+    //        }
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         getFilmsImag()
     }
     
-    // MARK: - Configure methods
+    //     MARK: - Configure methods
     func getFilmsImag() {
-        NetManagerFilms.getFilmsImages { (images: [FilmsImages]) in
-            self.newsArrayFilms = images
+        NetManagerFilms.getFilmsImages { (point:FilmsCount) in
+            
+            if let filmResult = point.results {
+               self.newsArrayFilms = filmResult
+            //            if let items = solution.items {
+            //                self.moreImage = items
+            //            }
+            
         }
         
         
     }
     
 }
+}
 
 extension FilmsViewController: UITableViewDataSource {
+    
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return newsArrayFilms.count
     }
     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let filmsCell = tableView.dequeueReusableCell(withIdentifier: "FilmsTableViewCell", for: indexPath) as! FilmsTableViewCell
-        let arrayItemFilm = newsArrayFilms[indexPath.row]
-//        filmsCell.confugureCellLAbel(model: )
-        filmsCell.confugureCellImage(model: arrayItemFilm)
-        
-        
-        
+        filmsCell.LabelFilms.text = newsArrayFilms[indexPath.row].title
+        filmsCell.confugureCellFilmslabel(modelOne: newsArrayFilms[indexPath.row])
         
         return filmsCell
+        
+    }
+}
+extension FilmsViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 450//UITableView.automaticDimension
     }
     
     
 }
-

@@ -28,6 +28,11 @@ class NewstViewController: UIViewController {
         getNewsImag()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        navigationController?.navigationBar.isHidden = true
+    }
+    
     // MARK: - Configure methods
     func getNewsImag() {
         NetManagerNews.getNewsImages(url: urlNews, location: globalLocation) { (result: NewsDictionary) in
@@ -70,6 +75,14 @@ extension NewstViewController: UITableViewDataSource {
 extension NewstViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        print(newsArrayNews[indexPath.row].id)
+        
+        let cell = tableView.cellForRow(at: indexPath) as! NewsTableViewCell
+        
+        let sb = UIStoryboard(name: "Main", bundle: nil)
+        let vc = sb.instantiateViewController(withIdentifier: "NavigationTableViewController") as! NavigationTableViewController
+        vc.newsId = newsArrayNews[indexPath.row].id
+        vc.image = cell.imagesNews.image
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
@@ -78,11 +91,9 @@ extension NewstViewController: UITableViewDelegate {
        
             if indexPath.row > indexCellforDownoload {
                 if isLoad == false {
-                    print("Download new items")
                     if let next = nextPageUrl { getNewsPagination(paginationUrl: next) }
                     
                 } else {
-                    print("wait")
                 }
             }
         
