@@ -16,48 +16,33 @@ class FilmsTableViewCell: UITableViewCell {
         super.awakeFromNib()
         // Initialization code
     }
-
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
+        
         // Configure the view for the selected state
     }
     
     
-    func confugureCellImage(model: FilmsImages) {
-        configureImage(image: model.image)
-    }
-    func confugureCellLAbel(model:FilmsResults ) {
-        configureImage(image: model.title)
-    }
-    
-    func configureImage(image: String) {
+    func confugureCellFilmslabel(modelOne: FilmsResults) {
+        LabelFilms.text = modelOne.title
+        if  (modelOne.poster.image) != nil {
+            setupImageView(url: (modelOne.poster.image))
+        }
         
-        getImageFromServer(imgageUrl: image)
-    }
-    
-    func configureImageArray(image: UIImage) {
-        self.FilmsImages.image = image
-        
+        //        if (model.first_image?.image) != nil {
+        //            setupImageView(url: (model.first_image?.image)!)
+        //        }
     }
     
     // MARK: - NetManager Methods save
-    func getImageFromServer(imgageUrl: String) {
-        let imageURL: URL = URL(string: imgageUrl)!
-        let queue = DispatchQueue.global(qos: .utility)
-        queue.async{
-            if let data = try? Data(contentsOf: imageURL){
-                DispatchQueue.main.async {
-                    if let image = UIImage(data: data) {
-                        self.configureImageArray(image: image)
-                    }
-                }
-            }
-        }
+    func setupImageView(url: String) {
+        let urlImage = URL(string: url)!
+        FilmsImages.af_setImage(withURL: urlImage,
+                                placeholderImage: UIImage(),
+                                filter: nil, progress: nil,
+                                imageTransition: UIImageView.ImageTransition.noTransition, runImageTransitionIfCached: false,
+                                completion: nil)
     }
     
-    
-    
 }
-
-
